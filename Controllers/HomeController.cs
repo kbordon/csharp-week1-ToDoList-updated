@@ -17,7 +17,6 @@ namespace ToDoList.Controllers
         public ActionResult IndexPost()
         {
             Task newTask = new Task (Request.Form["new-task"]);
-            newTask.Save();
             List<string> allTasks = Task.GetAll();
             return View(allTasks);
         }

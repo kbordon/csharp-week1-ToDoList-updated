@@ -10,6 +10,7 @@ namespace ToDoList.Models
         public Task (string description)
         {
             _description = description;
+            _instances.Add(_description);
         }
         public string GetDescription()
         {
@@ -22,10 +23,6 @@ namespace ToDoList.Models
         public static List<string> GetAll()
         {
             return _instances;
-        }
-        public void Save()
-        {
-            _instances.Add(_description);
         }
         public static void ClearAll()
         {
