@@ -10,22 +10,24 @@ namespace ToDoList.Controllers
         [Route("/")]
         public ActionResult Index()
         {
-            return View(null);
+            return View(Task.GetAll());
         }
 
         [HttpPost("/task/list/add"), ActionName("Index")]
         public ActionResult IndexPost()
         {
-            Task newTask = new Task (Request.Form["new-task"]);
-            List<string> allTasks = Task.GetAll();
-            return View(allTasks);
+            if (Request.Form["new-task"] != "")
+            {
+                Task newTask = new Task (Request.Form["new-task"]);
+            }
+            return View(Task.GetAll());
         }
 
         [HttpPost("/task/list/clear"), ActionName("Index")]
         public ActionResult TaskListClear()
         {
             Task.ClearAll();
-            return View(null);
+            return View(Task.GetAll());
         }
     }
 }
